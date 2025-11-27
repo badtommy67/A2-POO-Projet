@@ -71,7 +71,7 @@ Le fichier doit respecter le format suivant :
 1.  Première ligne : `Lignes Colonnes`
 2.  Lignes suivantes : Matrice de `0` (mort) et `1` (vivant).
 
-**Exemple (`glider.txt`) :**
+**Exemple (`grille.txt`) :**
 
 ```text
 10 10
