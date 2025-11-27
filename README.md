@@ -5,7 +5,7 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 ## Table des Matières
 
 1.  Fonctionnalités
-2.  Architecture Technique
+2.  Architecture technique
 3.  Utilisation
 4.  Format du fichier d'entrée
 5.  Auteurs
@@ -21,11 +21,11 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 
 -----
 
-## Architecture Technique
+## Architecture technique
 
 Ce projet se distingue par l'utilisation avancée de concepts objets pour éviter le code procédural :
 
-### 1\. Pattern État (State Pattern)
+### 1\. État
 
 Contrairement à une simple approche booléenne, l'état d'une cellule est géré par polymorphisme.
 
@@ -33,7 +33,7 @@ Contrairement à une simple approche booléenne, l'état d'une cellule est gér�
   * **États concrets** : `Est_vivant`, `Est_mort`.
   * **Avantage** : Permet d'ajouter facilement des états futurs (ex: "Malade", "Immunisé") sans changer la classe `Cellule`.
 
-### 2\. Pattern Stratégie (Strategy Pattern)
+### 2\. Règles
 
 Les règles de survie et de naissance sont encapsulées.
 
@@ -41,10 +41,10 @@ Les règles de survie et de naissance sont encapsulées.
   * **Implémentation** : `Regles_initiales` (Règles classiques de Conway).
   * **Avantage** : On peut changer les règles du jeu à la volée (ex: "HighLife", "Day & Night") sans toucher à la grille.
 
-### 3\. Architecture MVC (Modèle-Vue-Contrôleur)
+### 3\. Architecture du programme simplifiée
 
-  * **Modèle** : `Grille`, `Cellule`, `Regles`.
-  * **Vues** : `Console`, `Graphique`.
+  * **Composants** : `Grille`, `Cellule`, `Regles`.
+  * **Visualisation** : `Console`, `Graphique`.
   * **Contrôleur** : `Gestion_jeu`.
 
 -----
@@ -64,7 +64,7 @@ Une fois lancé, le programme vous demandera de choisir le mode :
 
 -----
 
-## 📄 Format du Fichier d'Entrée
+## Format du fichier d'entrée
 
 Le fichier doit respecter le format suivant :
 
