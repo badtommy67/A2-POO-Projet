@@ -4,8 +4,8 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 
 ## Table des Matières
 
-1.  [Fonctionnalités](https://www.google.com/search?q=%23-fonctionnalit%C3%A9s)
-2.  [Architecture Technique](https://www.google.com/search?q=%23-architecture-technique)
+1.  Fonctionnalités
+2.  [Architecture Technique]
 3.  [Prérequis](https://www.google.com/search?q=%23-pr%C3%A9requis)
 4.  [Compilation](https://www.google.com/search?q=%23-compilation)
 5.  [Utilisation](https://www.google.com/search?q=%23-utilisation)
