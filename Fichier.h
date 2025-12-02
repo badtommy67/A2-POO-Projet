@@ -7,14 +7,13 @@
 class Fichier {
 private:
     std::string nom_entree;
-    std::string nom_sortie;
 
 public:
-    Fichier(std::string entree, std::string sortie);
+    Fichier(std::string entree);
 
     std::vector<std::vector<bool>> lecture();
 
-    void ecriture(const std::vector<std::vector<bool>>& matriceEtat, int iteration);
+    void ecriture(const std::vector<std::vector<bool>>& matriceEtat);
     
     void creationDossier();
 };
