@@ -2,29 +2,23 @@
 #define IGRILLE_H
 
 #include <vector>
-#include <string>
 #include "Cellule.h"
-#include "Regles_du_jeu.h"
 
 class IGrille {
-private:
-    std::vector<std::vector<Cellule>> cellules;
-    int largeur;
-    int longueur;
-    Regles_du_jeu* regles;
-
+protected:
+    IGrille() = default;
+    
 public:
-    Grille(int l, int L);
-    
-    virtual void chargerGrille(const std::vector<std::vector<bool>>& matriceInitiale);
+    virtual ~IGrille() = default;
 
-    virtual int compterVoisins(int x, int y) const;
-
-    virtual void mettreAJourGrille(); 
-    
-    virtual int getLargeur() const;
-    virtual int getLongueur() const;
-    virtual const Cellule& getCellule(int x, int y) const;
+    virtual void fill(int value) = 0;
+    virtual void chargerGrille(const std::vector<std::vector<bool>>& matrice) = 0;
+    virtual int compterVoisins(int x, int y) = 0;
+    virtual bool mettreAJourGrille() = 0; 
+    virtual int getLigne() const = 0;
+    virtual int getColonne() const = 0;
+    virtual Cellule& getCellule(int x, int y)= 0;
+    virtual std::vector<std::vector<bool>> getMatriceEtat() const=0;
 };
 
 #endif

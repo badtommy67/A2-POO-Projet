@@ -1,20 +1,20 @@
-#include "Grille.h"
+#include "Grille_Torique.h"
 #include "Regles_initiales.h"
 #include <cmath>
 #include <iostream>
 
 
-Grille::Grille(int l, int c) : IGrille(), ligne(l), colonne(c) {
+Grille_Torique::Grille_Torique(int l, int c) : IGrille(), ligne(l), colonne(c) {
     regles = new Regles_initiales();
     cellules.resize(ligne, std::vector<Cellule>(colonne));
 }
 
-Grille::~Grille() {
+Grille_Torique::~Grille_Torique() {
     delete regles;
 }
 
 
-void Grille::chargerGrille(const std::vector<std::vector<bool>>& matrice) {
+void Grille_Torique::chargerGrille(const std::vector<std::vector<bool>>& matrice) {
     if (matrice.empty() || matrice[0].empty()) return;
 
     if (cellules.size() != ligne || cellules[0].size() != colonne) {
@@ -31,14 +31,18 @@ void Grille::chargerGrille(const std::vector<std::vector<bool>>& matrice) {
     }
 }
 
-int Grille::compterVoisins(int x, int y) {
+int Grille_Torique::compterVoisins(int x, int y) {
     int nb_voisins = 0;
-    for (int i = std::max(0, x - 1); i <= std::min(ligne - 1, x + 1); i++) {
-        for (int j = std::max(0, y - 1); j <= std::min(colonne - 1, y + 1); j++) {
 
-            if (i == x && j == y) continue;
+    for (int dx = -1; dx <= 1; dx++) {
+        for (int dy = -1; dy <= 1; dy++) {
 
-            if (cellules[i][j].getEtat()->estVivante())
+            if (dx == 0 && dy == 0) continue;
+            
+            int nx = (x + dx + ligne) % ligne;
+            int ny = (y + dy + colonne) % colonne;
+
+            if (cellules[nx][ny].getEtat()->estVivante())
                 nb_voisins++;
         }
     }
@@ -46,11 +50,11 @@ int Grille::compterVoisins(int x, int y) {
     return nb_voisins;
 }
 
-int Grille::getLigne()const{return ligne;}
-int Grille::getColonne()const{return colonne;}
-Cellule& Grille::getCellule(int x, int y){return cellules[x][y];}
+int Grille_Torique::getLigne()const{return ligne;}
+int Grille_Torique::getColonne()const{return colonne;}
+Cellule& Grille_Torique::getCellule(int x, int y){return cellules[x][y];}
 
-bool Grille::mettreAJourGrille() {
+bool Grille_Torique::mettreAJourGrille() {
     if(!regles) return 0;
 
 
@@ -78,7 +82,7 @@ bool Grille::mettreAJourGrille() {
     return 1;
 }
 
-void Grille::fill(int value) {
+void Grille_Torique::fill(int value) {
     //std::cout << "Début fill, value=" << value << std::endl;
     bool val = (value != 0);
     
@@ -100,7 +104,7 @@ void Grille::fill(int value) {
     //std::cout << "Fin fill" << std::endl;
 }
 
-std::vector<std::vector<bool>> Grille::getMatriceEtat() const {
+std::vector<std::vector<bool>> Grille_Torique::getMatriceEtat() const {
     // 1. On crée une matrice vide de la bonne taille
     std::vector<std::vector<bool>> matrice(ligne, std::vector<bool>(colonne));
 

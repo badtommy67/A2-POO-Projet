@@ -5,7 +5,7 @@
 
 class Est_vivant : public Etat_cellule {
 public:
-    bool estVivante() const override;
+    bool estVivante() const;
 };
 
 #endif

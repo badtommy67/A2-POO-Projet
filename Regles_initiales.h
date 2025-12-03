@@ -7,7 +7,7 @@
 
 class Regles_initiales : public Regles_du_jeu {
 public:
-    Etat_cellule* calculerProchainEtat(bool estVivant, int nb_voisins) override;
+    Cellule* calculerProchainEtat(Cellule& cel, int nb_voisins)override;
 };
 
 #endif
