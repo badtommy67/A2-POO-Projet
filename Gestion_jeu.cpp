@@ -95,7 +95,7 @@ void Gestion_jeu::jouerGraphique(){
     int ligne=grille->getLigne();
     int colonne=grille->getColonne();
     const int cellSize=graphique.getCellSize();
-    sf::RenderWindow window(sf::VideoMode(colonne * cellSize, ligne * cellSize), "Game of Life", sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode(colonne * cellSize, ligne * cellSize), "Jeu de la vie - Groupe 12 - CESI_", sf::Style::Default);
     
 
     int iteration=0;
