@@ -15,8 +15,6 @@ private:
 
 public:
     Graphique(IGrille& g, int tailleCellule = 10);
-    
-    void initialiserGrille();
     void affichageCellules(sf::RenderWindow &window);
     const int getCellSize()const{return cellSize;}
 };

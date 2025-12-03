@@ -89,12 +89,38 @@ void Fichier::creationDossier(){
     fs::path chemin_complet = fs::path("Fichiers_sortie") / nom_dossier; // ici on va creer le chemin complet
 
     try {
-        if (fs::create_directories(chemin_complet)) {
+        if (fs::create_directories(chemin_complet))
             cout << "Dossier '" << chemin_complet << "' créé avec succès !" << endl;
-        } else {
-            cout << "Le dossier '" << chemin_complet << "' existe déjà." << endl;
-        }
     }catch (fs::filesystem_error& e) {
         cout << "Erreur lors de la création du dossier : " << e.what() << endl;
     }
+}
+
+vector<vector<bool>> Fichier::aleatoire(int lignes, int colonnes){
+    fs::path chemin_entree(nom_entree);
+    vector<vector<bool>> matrice(lignes, vector<bool>(colonnes));
+    srand(time(0));
+    for (int x = 0; x < lignes; ++x) {
+        for (int y = 0; y < colonnes; ++y) {
+                matrice[x][y]=rand() % 2;
+        }
+    }
+    ofstream flux(nom_entree);
+    // on va ecrire la matrice dans le fichier
+    flux<<lignes<<" "<<colonnes<<endl;
+    for (const auto& ligne : matrice) {
+        for (int i = 0; i < ligne.size(); i++) {
+            bool val = ligne[i]; // On récupère la valeur
+            if (val == true) {
+                flux << '1';
+            } else {
+                flux << '0';
+            }
+        flux << ""; // On ajoute l'espace
+        }
+        flux << endl;
+    }
+    flux.close();
+
+    return matrice;
 }
