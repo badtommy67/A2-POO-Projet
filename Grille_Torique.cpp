@@ -3,7 +3,6 @@
 #include <cmath>
 #include <iostream>
 
-
 Grille_Torique::Grille_Torique(int l, int c) : IGrille(), ligne(l), colonne(c) {
     regles = new Regles_initiales();
     cellules.resize(ligne, std::vector<Cellule>(colonne));

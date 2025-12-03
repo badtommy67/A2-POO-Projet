@@ -17,6 +17,8 @@ public:
     void ecriture(const std::vector<std::vector<bool>>& matriceEtat);
     
     void creationDossier();
+
+    std::vector<std::vector<bool>> aleatoire(int lignes, int colonnes);
 };
 
 #endif

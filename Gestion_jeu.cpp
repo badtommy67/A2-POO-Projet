@@ -18,9 +18,21 @@ Gestion_jeu::~Gestion_jeu() {
 
 void Gestion_jeu::initialiser(){
     //std::cout << "Début initialisation" << std::endl;
-    
-    cout << "Quel est le fichier à prendre en entrée ?" << endl;
-    cin >> nom_entree;
+    bool random;
+    cout<<"Voulez-vous utiliser un fichier source ? 0-Non 1-Oui"<<endl;
+    cin>>random;
+    int lignes, colonnes;
+    if(random){
+        cout << "Quel est le fichier à prendre en entrée ?" << endl;
+        cin >> nom_entree;
+        gestionFichier = new Fichier(nom_entree);
+    }
+    else{
+        cout<<"Combien de lignes ?"<<endl;
+        cin>>lignes;
+        cout<<"Nombre de colonnes ?"<<endl;
+        cin>>colonnes; 
+    }       
     cout << "Combien d'itérations souhaitez-vous ?" << endl;
     cin >> nb_iterations;
     int mode;
@@ -31,16 +43,24 @@ void Gestion_jeu::initialiser(){
     cin >> mode_grille;
 
     //std::cout << "Création gestionFichier" << std::endl;
-    gestionFichier = new Fichier(nom_entree);
-    gestionFichier->creationDossier();
-
-    //std::cout << "Lecture du fichier" << std::endl;
-    vector<vector<bool>> matrice = gestionFichier->lecture();
-
-    if (matrice.empty() || matrice[0].empty()) {
+    vector<vector<bool>> matrice;
+    if(random){
+        gestionFichier = new Fichier(nom_entree);
+        gestionFichier->creationDossier();
+        matrice = gestionFichier->lecture();
+        if (matrice.empty() || matrice[0].empty()) {
         cout << "Erreur: La grille lue est vide ou mal formatée. Abandon." << endl;
         return;
     }
+    } else{
+        gestionFichier = new Fichier(nom_entree="Fichiers_source/aleatoire.txt");
+        gestionFichier->creationDossier();
+        gestionFichier->aleatoire(lignes, colonnes);
+        matrice = gestionFichier->lecture();
+    }
+    //std::cout << "Lecture du fichier" << std::endl;
+
+    
 
     int nb_ligne = matrice.size();
     int nb_colonne = matrice[0].size();
@@ -59,6 +79,7 @@ void Gestion_jeu::initialiser(){
     grille->fill(0);
 
     //std::cout << "Chargement grille" << std::endl;
+    grille = new Grille(nb_ligne, nb_colonne);
     grille->chargerGrille(matrice);
     
     //std::cout << "Lancement du jeu, mode=" << mode << std::endl;
@@ -95,6 +116,11 @@ void Gestion_jeu::jouerGraphique(){
     int ligne=grille->getLigne();
     int colonne=grille->getColonne();
     const int cellSize=graphique.getCellSize();
+    if (cellSize <= 0 || colonne <= 0 || ligne <= 0) {
+        cout << "Erreur: dimensions invalides: ligne=" << ligne
+                  << " colonne=" << colonne << " cellSize=" << cellSize << endl;
+        return;
+    }
     sf::RenderWindow window(sf::VideoMode(colonne * cellSize, ligne * cellSize), "Jeu de la vie - Groupe 12 - CESI_", sf::Style::Default);
     
 
