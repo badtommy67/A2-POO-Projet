@@ -1,14 +1,15 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-#include "Grille.h"
+#include "IGrille.h"
 
 class Console {
 private:
-    const Grille& grille;
+    IGrille& grille;
 
 public:
-    Console(const Grille& g);
+    Console();
+    Console(IGrille& g);
     void affichageCellules();
 };
 

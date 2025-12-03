@@ -9,6 +9,7 @@ private:
     std::string nom_entree;
 
 public:
+    Fichier()=default;
     Fichier(std::string entree);
 
     std::vector<std::vector<bool>> lecture();

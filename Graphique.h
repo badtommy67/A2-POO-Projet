@@ -1,16 +1,24 @@
 #ifndef GRAPHIQUE_H
 #define GRAPHIQUE_H
 
-#include "Grille.h"
+#include <SFML/Graphics.hpp>
+#include "IGrille.h"
+#include "Fichier.h"
+#include <vector>
+
 
 class Graphique {
 private:
-    const Grille& grille;
+    IGrille& grille;
+    const int cellSize;
+    Fichier* gestionFichierGraph;
 
 public:
-    Graphique(const Grille& g);
-    void ouvrirFenetre();
-    void affichageCellules();
+    Graphique(IGrille& g, int tailleCellule = 10);
+    
+    void initialiserGrille();
+    void affichageCellules(sf::RenderWindow &window);
+    const int getCellSize()const{return cellSize;}
 };
 
 #endif

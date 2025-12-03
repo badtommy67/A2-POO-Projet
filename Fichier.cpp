@@ -16,14 +16,14 @@ vector<vector<bool>> Fichier::lecture() {
         return {}; // renvoie une matrice vide en cas d'erreur
     }
 
-    int longueur;
-    int largeur;
-    fichier >> largeur >> longueur; // on met la largeur dans largeur et la longueur dans longueur
+    int colonne;
+    int ligne;
+    fichier >> ligne >> colonne; // on met la ligne dans ligne et la colonne dans colonne
 
-    vector<vector<bool>> matrice(longueur, vector<bool>(largeur)); // creation de la matrice
+    vector<vector<bool>> matrice(ligne, vector<bool>(colonne)); // creation de la matrice
 
-    for (int i = 0; i < longueur; i++) {
-        for (int j = 0; j < largeur; j++) {
+    for (int i = 0; i < ligne; i++) {
+        for (int j = 0; j < colonne; j++) {
             char c;
             fichier >> c; // on recupere un caractere de la lecture, mais on cherche un booléen
             bool val;
@@ -74,7 +74,7 @@ void Fichier::ecriture(const vector<vector<bool>>& matriceEtat){
             } else {
                 flux << '0';
             }
-        flux << " "; // On ajoute l'espace
+        flux << ""; // On ajoute l'espace
         }
         flux << endl;
     }
