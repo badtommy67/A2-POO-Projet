@@ -15,6 +15,17 @@ private:
     IGrille* grille;
     Fichier* gestionFichier;
 
+    bool demanderTypeSource();
+    void configurerSource(bool estFichier);
+    void demanderParametresJeu(int& modeVisu, int& modeGrille);
+    std::vector<std::vector<bool>> recupererMatrice(bool estFichier);
+    void instancierGrilleSelonMode(int modeGrille, const std::vector<std::vector<bool>>& matrice);
+    
+    sf::RenderWindow* initialiserFenetre(int cellSize);
+    void gererEvenements(sf::RenderWindow& window);
+    void etapeGraphique(sf::RenderWindow& window, Graphique& graphique);
+    void sauvegarderEtape();
+
 public:
     Gestion_jeu(std::string fichierEntree, int nb_iterations, int compteur_iteration);
     Gestion_jeu();
