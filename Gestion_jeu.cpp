@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <fstream>
 
 using namespace std;
 
@@ -15,22 +16,29 @@ Gestion_jeu::~Gestion_jeu() {
 }
 
 void Gestion_jeu::initialiser() {
-    bool estFichier = demanderTypeSource();
-    configurerSource(estFichier);
+    cout << "Voulez-vous faire un test unitaire ? 1 : Oui - 0 : Non" << endl;
+    bool test_unitaire;
+    cin >> test_unitaire;
+    if (test_unitaire){
+        test_unitaire_fonction();
+    }else{
+        bool estFichier = demanderTypeSource();
+        configurerSource(estFichier);
 
-    int modeVisu, modeGrille;
-    demanderParametresJeu(modeVisu, modeGrille);
+        int modeVisu, modeGrille;
+        demanderParametresJeu(modeVisu, modeGrille);
 
-    vector<vector<bool>> matrice = recupererMatrice(estFichier);
-    if (matrice.empty() || matrice[0].empty()) {
-        cout << "Erreur: Grille vide." << endl; return;
+        vector<vector<bool>> matrice = recupererMatrice(estFichier);
+        if (matrice.empty() || matrice[0].empty()) {
+            cout << "Erreur: Grille vide." << endl; return;
+        }
+
+        instancierGrilleSelonMode(modeGrille, matrice);
+
+        if (modeVisu == 1) jouerConsole();
+        else if (modeVisu == 2) jouerGraphique();
+        else cout << "Entree non valide !" << endl;
     }
-
-    instancierGrilleSelonMode(modeGrille, matrice);
-
-    if (modeVisu == 1) jouerConsole();
-    else if (modeVisu == 2) jouerGraphique();
-    else cout << "Entree non valide !" << endl;
 }
 
 bool Gestion_jeu::demanderTypeSource() {
@@ -144,4 +152,62 @@ void Gestion_jeu::jouerGraphique() {
     
     windowPtr->close();
     delete windowPtr;
+}
+
+void Gestion_jeu::test_unitaire_fonction(){
+    nom_entree="Fichiers_source/test_unitaire.txt";
+    gestionFichier = new Fichier(nom_entree);
+    nb_iterations=10;
+    gestionFichier->creationDossier();
+    vector<vector<bool>> matrice =gestionFichier->lecture();
+    instancierGrilleSelonMode(0, matrice);
+    jouerConsole();
+    verifier_correction();
+}
+
+void Gestion_jeu::verifier_correction(){
+    string chemin1 = "test_unitaire_cligno.txt";
+    string chemin2 = "Fichiers_sortie/test_unitaire_out/iteration9.txt";
+    vector<vector<char>> v1;
+    vector<vector<char>> v2;
+    string ligne;
+    ifstream f1(chemin1);
+    while (getline(f1, ligne)) {
+        vector<char> row;
+
+        for (char c : ligne) {
+            if (c == '0' || c == '1')
+                row.push_back(c);
+        }
+
+        if (!row.empty())
+            v1.push_back(row);
+    }
+    f1.close();
+
+    // ---- Lecture fichier 2 ----
+    ifstream f2(chemin2);
+    if (!f2.is_open()) {
+        cout << "Impossible d'ouvrir " << chemin2 << endl;
+        return;
+    }
+
+    while (getline(f2, ligne)) {
+        vector<char> row;
+
+        for (char c : ligne) {
+            if (c == '0' || c == '1')
+                row.push_back(c);
+        }
+
+        if (!row.empty())
+            v2.push_back(row);
+    }
+    f2.close();
+
+    if (v1.size() != v2.size()) {
+        cout << "Les fichiers sont différents (nombre de lignes différent)." << endl;
+        return;
+    }
+    cout << "Les fichiers sont identiques !" << endl;
 }
