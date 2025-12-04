@@ -3,7 +3,7 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 
 ## Table des Matières
 
-1.  Fonctionnalités
+1.  Objectifs
 2.  Architecture technique
 3.  Utilisation
 4.  Format du fichier d'entrée
@@ -11,7 +11,7 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 -----
 
 ## Fonctionnalités
-## 1\. Fonctionnalités
+## 1\. Objetifs
 
   * **Lecture de grille :** Chargement de l'état initial depuis un fichier texte.
   * **Mode Console :** Simulation rapide avec écriture des itérations dans des fichiers de sortie.
