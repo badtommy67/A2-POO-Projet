@@ -25,6 +25,8 @@ private:
     void gererEvenements(sf::RenderWindow& window);
     void etapeGraphique(sf::RenderWindow& window, Graphique& graphique);
     void sauvegarderEtape();
+    void test_unitaire_fonction();
+    void verifier_correction();
 
 public:
     Gestion_jeu(std::string fichierEntree, int nb_iterations, int compteur_iteration);
