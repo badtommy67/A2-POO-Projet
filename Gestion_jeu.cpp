@@ -3,11 +3,9 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-
 using namespace std;
 
-Gestion_jeu::Gestion_jeu(string nom_entree, int nb_iterations, int compteur_iteration)
-    : nom_entree(nom_entree), nb_iterations(nb_iterations), compteur_iteration(compteur_iteration), grille(nullptr), gestionFichier(nullptr) {}
+Gestion_jeu::Gestion_jeu(string nom_entree, int nb_iterations, int compteur_iteration) : nom_entree(nom_entree), nb_iterations(nb_iterations), compteur_iteration(compteur_iteration), grille(nullptr), gestionFichier(nullptr) {}
 
 Gestion_jeu::Gestion_jeu() : grille(nullptr), gestionFichier(nullptr), nb_iterations(0), compteur_iteration(0) {}
 
@@ -16,136 +14,134 @@ Gestion_jeu::~Gestion_jeu() {
     delete gestionFichier;
 }
 
-void Gestion_jeu::initialiser(){
-    //std::cout << "Début initialisation" << std::endl;
-    bool random;
-    cout<<"Voulez-vous utiliser un fichier source ? 0-Non 1-Oui"<<endl;
-    cin>>random;
-    int lignes, colonnes;
-    if(random){
+void Gestion_jeu::initialiser() {
+    bool estFichier = demanderTypeSource();
+    configurerSource(estFichier);
+
+    int modeVisu, modeGrille;
+    demanderParametresJeu(modeVisu, modeGrille);
+
+    vector<vector<bool>> matrice = recupererMatrice(estFichier);
+    if (matrice.empty() || matrice[0].empty()) {
+        cout << "Erreur: Grille vide." << endl; return;
+    }
+
+    instancierGrilleSelonMode(modeGrille, matrice);
+
+    if (modeVisu == 1) jouerConsole();
+    else if (modeVisu == 2) jouerGraphique();
+    else cout << "Entree non valide !" << endl;
+}
+
+bool Gestion_jeu::demanderTypeSource() {
+    bool reponse;
+    cout << "Voulez-vous utiliser un fichier source ? 0-Non 1-Oui" << endl;
+    cin >> reponse;
+    return reponse;
+}
+
+void Gestion_jeu::configurerSource(bool estFichier) {
+    if (estFichier) {
         cout << "Quel est le fichier à prendre en entrée ?" << endl;
         cin >> nom_entree;
         gestionFichier = new Fichier(nom_entree);
+    } else {
+        nom_entree = "Fichiers_source/aleatoire.txt";
+        gestionFichier = new Fichier(nom_entree);
     }
-    else{
-        cout<<"Combien de lignes ?"<<endl;
-        cin>>lignes;
-        cout<<"Nombre de colonnes ?"<<endl;
-        cin>>colonnes; 
-    }       
+}
+
+void Gestion_jeu::demanderParametresJeu(int& modeVisu, int& modeGrille) {
     cout << "Combien d'itérations souhaitez-vous ?" << endl;
     cin >> nb_iterations;
-    int mode;
-    cout << "Quel mode souhaitez-vous ? 1-Console | 2-Graphique" << endl;
-    cin >> mode;
-    cout << "Quel grille souhaitez-vous ? 1-Normal | 2-Torique" << endl;
-    int mode_grille;
-    cin >> mode_grille;
-
-    //std::cout << "Création gestionFichier" << std::endl;
-    vector<vector<bool>> matrice;
-    if(random){
-        gestionFichier = new Fichier(nom_entree);
-        gestionFichier->creationDossier();
-        matrice = gestionFichier->lecture();
-        if (matrice.empty() || matrice[0].empty()) {
-        cout << "Erreur: La grille lue est vide ou mal formatée. Abandon." << endl;
-        return;
-    }
-    } else{
-        gestionFichier = new Fichier(nom_entree="Fichiers_source/aleatoire.txt");
-        gestionFichier->creationDossier();
-        gestionFichier->aleatoire(lignes, colonnes);
-        matrice = gestionFichier->lecture();
-    }
-    //std::cout << "Lecture du fichier" << std::endl;
-
     
+    cout << "Quel mode souhaitez-vous ? 1-Console | 2-Graphique" << endl;
+    cin >> modeVisu;
+    
+    cout << "Quelle grille souhaitez-vous ? 1-Normale | 2-Torique" << endl;
+    cin >> modeGrille;
+}
 
+vector<vector<bool>> Gestion_jeu::recupererMatrice(bool estFichier) {
+    gestionFichier->creationDossier();
+    
+    if (!estFichier) {
+        int ligne, colonne;
+        cout << "Combien de lignes ?" << endl; cin >> ligne;
+        cout << "Nombre de colonnes ?" << endl; cin >> colonne;
+        gestionFichier->aleatoire(ligne, colonne);
+    }
+    return gestionFichier->lecture();
+}
+
+void Gestion_jeu::instancierGrilleSelonMode(int modeGrille, const vector<vector<bool>>& matrice) {
     int nb_ligne = matrice.size();
     int nb_colonne = matrice[0].size();
 
-    //std::cout << "Création grille " << nb_ligne << "x" << nb_colonne << std::endl;
-    if(mode_grille==1)
-    grille = new Grille(nb_ligne, nb_colonne);
-    else if(mode_grille==2)
-    grille = new Grille_Torique(nb_ligne, nb_colonne);
-    else {
-        cout<<"Grille invalide"<<endl;
-        return;
-    }
-    
-    //std::cout << "Fill grille" << std::endl;
-    grille->fill(0);
+    if (modeGrille == 2) 
+        grille = new Grille_Torique(nb_ligne, nb_colonne);
+    else 
+        grille = new Grille(nb_ligne, nb_colonne); // Par défaut ou mode 1
 
-    //std::cout << "Chargement grille" << std::endl;
-    grille = new Grille(nb_ligne, nb_colonne);
     grille->chargerGrille(matrice);
-    
-    //std::cout << "Lancement du jeu, mode=" << mode << std::endl;
-    if (mode == 1){
-        jouerConsole();
-    } else if (mode == 2){
-        jouerGraphique();
-    } else{
-        cout << "Entree non valide !" << endl;
-    }
-    
-    //std::cout << "Fin initialisation" << std::endl;
 }
 
-void Gestion_jeu::jouerConsole(){
+void Gestion_jeu::jouerConsole() {
     Console console(*grille);
     for (int i = 0; i < nb_iterations; ++i) {
         compteur_iteration++;
-
         
-
         console.affichageCellules();
-
         grille->mettreAJourGrille();
-
-        vector<vector<bool>> matrice_a_ecrire = grille->getMatriceEtat();
-
-        gestionFichier->ecriture(matrice_a_ecrire);
+        sauvegarderEtape();
     }
 }
 
-void Gestion_jeu::jouerGraphique(){
-    Graphique graphique(*grille);
-    int ligne=grille->getLigne();
-    int colonne=grille->getColonne();
-    const int cellSize=graphique.getCellSize();
-    if (cellSize <= 0 || colonne <= 0 || ligne <= 0) {
-        cout << "Erreur: dimensions invalides: ligne=" << ligne
-                  << " colonne=" << colonne << " cellSize=" << cellSize << endl;
-        return;
-    }
-    sf::RenderWindow window(sf::VideoMode(colonne * cellSize, ligne * cellSize), "Jeu de la vie - Groupe 12 - CESI_", sf::Style::Default);
+void Gestion_jeu::sauvegarderEtape() {
+    vector<vector<bool>> matrice_a_ecrire = grille->getMatriceEtat();
+    gestionFichier->ecriture(matrice_a_ecrire);
+}
+
+sf::RenderWindow* Gestion_jeu::initialiserFenetre(int cellSize) {
+    int ligne = grille->getLigne();
+    int colonne = grille->getColonne();
     
-
-    int iteration=0;
-
-    while (window.isOpen() && iteration<nb_iterations) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed){
-                sf::sleep(sf::milliseconds(100));
-                window.close();
-            }
-        }
-
-        graphique.affichageCellules(window);
-
-        grille->mettreAJourGrille();
-        iteration++;
-        
-        std::vector<std::vector<bool>> matrice_a_ecrire = grille->getMatriceEtat();
-
-
-        gestionFichier->ecriture(matrice_a_ecrire);
-
-        sf::sleep(sf::milliseconds(100));
+    if (cellSize <= 0 || colonne <= 0 || ligne <= 0) {
+        cout << "Erreur dimensions invalides." << endl;
+        return nullptr;
     }
-    window.close();
+    return new sf::RenderWindow(sf::VideoMode(colonne * cellSize, ligne * cellSize), "Jeu de la vie - Groupe 12 - CESI_");
+}
+
+void Gestion_jeu::gererEvenements(sf::RenderWindow& window) {
+    sf::Event event;
+    while (window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
+        }
+    }
+}
+
+void Gestion_jeu::etapeGraphique(sf::RenderWindow& window, Graphique& graphique) {
+    graphique.affichageCellules(window);
+    grille->mettreAJourGrille();
+    sauvegarderEtape();
+    sf::sleep(sf::milliseconds(100));
+}
+
+void Gestion_jeu::jouerGraphique() {
+    Graphique graphique(*grille);
+    sf::RenderWindow* windowPtr = initialiserFenetre(graphique.getCellSize());
+    
+    if (!windowPtr) return; // Gestion erreur dimensions
+
+    int iteration = 0;
+    while (windowPtr->isOpen() && iteration < nb_iterations) {
+        gererEvenements(*windowPtr);
+        etapeGraphique(*windowPtr, graphique);
+        iteration++;
+    }
+    
+    windowPtr->close();
+    delete windowPtr;
 }
