@@ -61,7 +61,7 @@ Lancez le programme :
 <ins>Une fois lancé, le programme vous demandera de choisir si vous souhaitez faire un test unitaire :</ins>
 
 
-1.  **Oui - test unitaire** : Execution automatique du programme avec un fichier contenant un clignotant (forme spéciale de grille) et vérifiant à un X-ième état, le bon fonctionnement du jeu. Vous avez fini !
+1.  **Oui - test unitaire** : Execution automatique du programme avec un fichier contenant un clignotant (forme spéciale de grille) et vérifiant à un X-ième état, le bon fonctionnement du jeu. Le programme fini et vous indiques s'il est correctement fonctionnel ou non !
 2.  **Non - execution normale** : Vous aurez d'autres questions, continuez la lecture.
 
 
