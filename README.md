@@ -1,7 +1,7 @@
 # Jeu de la Vie - Projet C++ POO - CESI - A2
 <img width="250" height="250" alt="logo_CESI_projet_etudiant_NB (1)" src="https://github.com/user-attachments/assets/11cff3cf-d7eb-4b2b-9753-9771714d70bf" />
 
-Ce projet est une implémentation orientée objet de l'automate cellulaire de John Conway, le **Jeu de la Vie**. Il a été conçu en respectant strictement les principes **SOLID** et en utilisant des **Design Patterns** pour assurer modularité et extensibilité.
+Ce projet est une implémentation orientée objet de l'automate cellulaire de John Conway, le **Jeu de la Vie**. Il a été conçu en respectant strictement les principes **SOLID** et en utilisant des **paradigmes de programmation** pour assurer sa modularité et son extensibilité.
 
 ## Table des Matières
 
@@ -101,7 +101,12 @@ Le fichier doit respecter le format suivant :
 -----
 
 ## 5\. Grilles pré-conçues
-
+Les fichiers sont dans `Fichiers_source`
+1. `aleatoire.txt` - ce fichier va être réutilisé pour la génération d'une grille aléatoire
+2. `lanceur_planeurs.txt` - utilisez ce fichier si vous souhaitez avoir un lanceur de planeurs auto-génératif (intéressant à partir de 130 itérations environ)
+3. `oscillateurs.txt` - utilisez ce fichier si vous souhaitez avoir des formes composées de cellules qui se répètent toutes les 2 itérations. Son fonctionnement est infini.
+4. `test_unitaire.txt` - ce fichier est utilisé pour réaliser le test unitaire. Il s'agit d'un clignotant.
+5. `un_sur_deux.txt` - ce fichier est une grille de 10 par 10 remplie de 0 et de 1 successifs. Son fonctionnement est symétrique et est agréable à regarder.
 
 -----
 
