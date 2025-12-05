@@ -49,13 +49,26 @@ Les règles de survie et de naissance sont encapsulées.
 
 ## 3\. Utilisation
 
-Le programme prend en argument le chemin du fichier de configuration.
+Lancez le programme puis répondez aux questions de ce dernier. Les réponses attendues vous sont proposées par une entrée numérale.
+
+Lancez le programme : 
 
 ```bash
-./JeuDeLaVie <fichier_entree.txt>
+./JeuDeLaVie
 ```
 
-Une fois lancé, le programme vous demandera de choisir le mode :
+Une fois lancé, le programme vous demandera de choisir si vous souhaitez faire un test unitaire :
+
+1.  **Oui - test unitaire** : Execution automatique du programme avec un fichier contenant un clignotant (forme spéciale de grille) et vérifiant à un X-ième état, le bon fonctionnement du jeu. Vous avez fini !
+2.  **Non - execution normale** : Vous aurez d'autres questions, continuez la lecture.
+
+
+Vous souhaitez donc lancer normalemment le jeu de la vie. Le programme vous demandera si vous avez un fichier d'entrée ou si vous souhaitez générer une grille aléatoire :
+
+1.  **Mode Console** : Génère les fichiers de sortie dans le dossier `*_out`.
+2.  **Mode Graphique** : Ouvre une fenêtre pour voir l'évolution.
+
+Vous souhaitez donc lancer normalemment le jeu de la vie. Le programme vous demandera de choisir le mode :
 
 1.  **Mode Console** : Génère les fichiers de sortie dans le dossier `*_out`.
 2.  **Mode Graphique** : Ouvre une fenêtre pour voir l'évolution.
@@ -71,7 +84,7 @@ Le fichier doit respecter le format suivant :
 1.  Première ligne : `Lignes Colonnes`
 2.  Lignes suivantes : Matrice de `0` (mort) et `1` (vivant).
 
-**Exemple (`glider.txt`) :**
+**Exemple (`grille.txt`) :**
 
 ```text
 10 10
