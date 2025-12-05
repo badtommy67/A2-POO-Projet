@@ -51,15 +51,37 @@ Les règles de survie et de naissance sont encapsulées.
 
 Le programme prend en argument le chemin du fichier de configuration.
 
-@@ -66,7 +64,7 @@ Une fois lancé, le programme vous demandera de choisir le mode :
+```bash
+./JeuDeLaVie <fichier_entree.txt>
+```
+
+Une fois lancé, le programme vous demandera de choisir le mode :
+
+1.  **Mode Console** : Génère les fichiers de sortie dans le dossier `*_out`.
+2.  **Mode Graphique** : Ouvre une fenêtre pour voir l'évolution.
 
 -----
 
 ## 4\. Format du fichier d'entrée
 
+Le programme prend en argument le chemin du fichier de configuration.
+
 Le fichier doit respecter le format suivant :
 
-@@ -87,7 +85,7 @@ Le fichier doit respecter le format suivant :
+1.  Première ligne : `Lignes Colonnes`
+2.  Lignes suivantes : Matrice de `0` (mort) et `1` (vivant).
+
+**Exemple (`glider.txt`) :**
+
+```text
+10 10
+0 0 1 0 0 0 0 0 0 0
+1 0 1 0 0 0 0 0 0 0
+0 1 1 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+...
+```
 
 -----
 
