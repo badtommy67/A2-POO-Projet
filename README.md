@@ -11,7 +11,7 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 -----
 
 ## Fonctionnalités
-## 1\. Objetifs
+## 1\. Objectifs
 
   * **Lecture de grille :** Chargement de l'état initial depuis un fichier texte.
   * **Mode Console :** Simulation rapide avec écriture des itérations dans des fichiers de sortie.
