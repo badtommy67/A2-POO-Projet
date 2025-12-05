@@ -19,7 +19,6 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 
   * **Lecture de grille :** Chargement de l'état initial depuis un fichier texte.
   * **Mode Console :** Simulation rapide avec écriture des itérations dans des fichiers de sortie.
-@@ -23,35 +21,35 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 
 -----
 
