@@ -113,7 +113,7 @@ Ce choix de grille est possible avant la génération des itérations. Elle perm
 Ainsi, une cellule tout à droite, qui va vers la droite ira sur le bord gauche, idem de l'autre sens, mais aussi de haut en bas, et en diagonales.
 
 Voici donc un schéma représentant le nouvel emplacement de la cellule **X** si elle va dans une direction :
-<img width="945" height="934" alt="image" src="https://github.com/user-attachments/assets/19e2d1aa-1534-4d47-a2a0-5ed52dc29080" />
+<img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/19e2d1aa-1534-4d47-a2a0-5ed52dc29080" />
 
 ### Génération aléatoire de la grille
 
