@@ -107,6 +107,19 @@ Le fichier doit respecter le format suivant :
 
 ## 6\. Extensions
 
+### Grille torique
+
+Ce choix de grille est possible avant la génération des itérations. Elle permet aux cellules de continuer de se déplacer sur la grille en revenant à l'opposé.
+Ainsi, une cellule tout à droite, qui va vers la droite ira sur le bord gauche, idem de l'autre sens, mais aussi de haut en bas, et en diagonales.
+
+Voici donc un schéma représentant le nouvel emplacement de la cellule **X** si elle va dans une direction :
+<img width="945" height="934" alt="image" src="https://github.com/user-attachments/assets/19e2d1aa-1534-4d47-a2a0-5ed52dc29080" />
+
+### Génération aléatoire de la grille
+
+Ce choix est fait lorsque vous n'avez pas, ou ne souhaitez pas donner de fichier en entrée au programme. Une grille sera alors générée aléatoirement.
+Vous pourrez cependant choisir son nombre de lignes et de colonnes. Ainsi qu'avoir une grille torique ou non.
+Les fichiers générés se situeront dans `Fichiers_sortie/aleatoire_out/`.
 
 -----
 
