@@ -7,7 +7,8 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 2.  Architecture technique
 3.  Utilisation
 4.  Format du fichier d'entrée
-5.  Auteurs
+5.  Extensions
+6.  Auteurs
 -----
 
 ## Fonctionnalités
@@ -57,21 +58,32 @@ Lancez le programme :
 ./JeuDeLaVie
 ```
 
-Une fois lancé, le programme vous demandera de choisir si vous souhaitez faire un test unitaire :
+*Une fois lancé, le programme vous demandera de choisir si vous souhaitez faire un test unitaire :*
 
 1.  **Oui - test unitaire** : Execution automatique du programme avec un fichier contenant un clignotant (forme spéciale de grille) et vérifiant à un X-ième état, le bon fonctionnement du jeu. Vous avez fini !
 2.  **Non - execution normale** : Vous aurez d'autres questions, continuez la lecture.
 
 
-Vous souhaitez donc lancer normalemment le jeu de la vie. Le programme vous demandera si vous avez un fichier d'entrée ou si vous souhaitez générer une grille aléatoire :
+*Vous souhaitez donc lancer normalemment le jeu de la vie. Le programme vous demandera si vous avez un fichier d'entrée ou si vous souhaitez générer une grille aléatoire :*
 
-1.  **Mode Console** : Génère les fichiers de sortie dans le dossier `*_out`.
-2.  **Mode Graphique** : Ouvre une fenêtre pour voir l'évolution.
+1.  **Non - générer une grille aléatoire** : Génère les fichiers de sortie dans le dossier `*_out`.
+2.  **Oui - utilisation d'un fichier source** : Ouvre une fenêtre pour voir l'évolution.
+
+ Vous souhaitez donc lancer normalemment le jeu de la vie. Le programme vous demandera de choisir le mode :
+
+ 1.  **Mode Console** : Génère les fichiers de sortie dans le dossier `*_out`.
+ 2.  **Mode Graphique** : Ouvre une fenêtre pour voir l'évolution.
+
+ Vous souhaitez donc lancer normalemment le jeu de la vie. Le programme vous demandera de choisir le mode :
+
+ 1.  **Mode Console** : Génère les fichiers de sortie dans le dossier `*_out`.
+ 2.  **Mode Graphique** : Ouvre une fenêtre pour voir l'évolution.
 
 Vous souhaitez donc lancer normalemment le jeu de la vie. Le programme vous demandera de choisir le mode :
 
 1.  **Mode Console** : Génère les fichiers de sortie dans le dossier `*_out`.
 2.  **Mode Graphique** : Ouvre une fenêtre pour voir l'évolution.
+
 
 -----
 
@@ -98,7 +110,13 @@ Le fichier doit respecter le format suivant :
 
 -----
 
-## 5\. Auteurs
+## 5\. Extensions
+
+
+
+-----
+
+## 6\. Auteurs
 
   * **JUND Tom**
   * **GIRARD Alexis**
