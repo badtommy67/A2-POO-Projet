@@ -29,7 +29,7 @@ Contrairement à une simple approche booléenne, l'état d'une cellule est gér�
 
   * **Classe** : `Cellule` délègue à `Etat_cellule`.
   * **États concrets** : `Est_vivant`, `Est_mort`.
-  * **Avantage** : Permet d'ajouter facilement des états futurs (ex: "Malade", "Immunisé") sans changer la classe `Cellule`.
+  * **Avantage** : Permet d'ajouter facilement des états futurs (ex: "Malade", "Immunisé", "Mur") sans changer la classe `Cellule`.
 
 ### Règles
 
