@@ -57,7 +57,9 @@ Lancez le programme :
 ./JeuDeLaVie
 ```
 
+
 <ins>Une fois lancé, le programme vous demandera de choisir si vous souhaitez faire un test unitaire :</ins>
+
 
 1.  **Oui - test unitaire** : Execution automatique du programme avec un fichier contenant un clignotant (forme spéciale de grille) et vérifiant à un X-ième état, le bon fonctionnement du jeu. Vous avez fini !
 2.  **Non - execution normale** : Vous aurez d'autres questions, continuez la lecture.
@@ -65,7 +67,9 @@ Lancez le programme :
 
 <ins>Vous souhaitez donc lancer normalemment le jeu de la vie. Le programme vous demandera si vous avez un fichier d'entrée ou si vous souhaitez générer une grille aléatoire.</ins>
 
+
 Dans le cas où vous souhaitez une grille aléatoire, on vous demandera dans l'ordre : le nombre d'itérations voulues, un affichage graphique ou console, une grille normale ou torique et enfin le nombre de lignes puis de colonnes.
+
 
 Dans le cas où vous souhaitez donner un fichier d'entrée, on vous demandera dans l'ordre : le nom du fichier d'entrée (avec le chemin s'il se situe dans `Fichiers_source`), le nombre d'itérations voulues, un affichage graphique ou console et enfin une grille normale ou torique.
 
