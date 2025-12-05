@@ -7,7 +7,9 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 2.  Architecture technique
 3.  Utilisation
 4.  Format du fichier d'entrée
-5.  Auteurs
+5.  Grilles pré-conçues
+6.  Extensions
+7.  Auteurs
 -----
 
 ## Fonctionnalités
@@ -98,7 +100,17 @@ Le fichier doit respecter le format suivant :
 
 -----
 
-## 5\. Auteurs
+## 5\. Grilles pré-conçues
+
+
+-----
+
+## 6\. Extensions
+
+
+-----
+
+## 7\. Auteurs
 
   * **JUND Tom**
   * **GIRARD Alexis**
