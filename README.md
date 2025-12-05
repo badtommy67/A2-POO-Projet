@@ -14,7 +14,6 @@ Ce projet est une implémentation orientée objet de l'automate cellulaire de Jo
 7.  Auteurs
 -----
 
-## Fonctionnalités
 ## 1\. Objectifs
 
   * **Lecture de grille :** Chargement de l'état initial depuis un fichier texte.
